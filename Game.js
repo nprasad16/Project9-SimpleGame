@@ -50,9 +50,9 @@ gameStatus = () => {
   const sumSelected = this.state.selectedNumbers.reduce((acc, curr) => {
     return acc + this.randomNumbers[curr];
   }, 0);
-  if (this.state.remainingSeconds === 0) {
-    return 'LOST';
-  }
+  // if (this.state.remainingSeconds === 0) {
+  //   return 'LOST';
+  // }
   if (sumSelected<this.target){
     return 'PLAYING';
   }
@@ -69,7 +69,7 @@ gameStatus = () => {
     const gameStatus = this.gameStatus();
     return (
       <View style={styles.container}>
-        <Text style={[styles.target, styles['STATUS_${gameStatus}']]}>{this.target}</Text>
+        <Text style={[styles.target, styles[`STATUS_${gameStatus}`]]}>{this.target}</Text>
         <View style={styles.randomContainer}>
         {this.randomNumbers.map((randomNumber, index) =>
           <RandomNumber
@@ -81,7 +81,7 @@ gameStatus = () => {
            />
       )}
       </View>
-      <Text>{this.state.remainingSeconds}</Text>
+      <Text>{gameStatus}</Text>
       </View>
     );
   }
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
   target: {
      fontSize: 50,
      margin: 50,
-     backgroundColor: '#bbb',
+    // backgroundColor: '#bbb',
      textAlign: 'center'
    },
 
